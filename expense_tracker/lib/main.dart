@@ -18,16 +18,13 @@ class DialogDemo extends StatefulWidget {
 }
 
 class _DialogDemoState extends State<DialogDemo> {
-  void showSnackBar(){
+  void showSnackBar(String text ){
      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(' You said yes '), backgroundColor: const Color.fromARGB(255, 96, 4, 4)),
+        SnackBar(content: Text(' You said $text '), backgroundColor: const Color.fromARGB(255, 96, 4, 4)),
       );
   }
-   void showSnackBarNO(){
-     ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(' You said NO '), backgroundColor: const Color.fromARGB(255, 96, 4, 4)),
-      );
-  }
+  
+  
 
   
   void showMydialog(){
@@ -41,14 +38,14 @@ class _DialogDemoState extends State<DialogDemo> {
           TextButton(
             onPressed: (){
               Navigator.pop(context);
-              showSnackBar();
+             showSnackBar("yes");
             },
             child:Text('Yes')
           ),
            TextButton(
             onPressed: (){
               Navigator.pop(context);
-              showSnackBarNO();
+              showSnackBar("no");
 
             },
             child:Text('NO')
@@ -89,7 +86,7 @@ class _DialogDemoState extends State<DialogDemo> {
       ),
        body: Center(
         child: ElevatedButton(
-          onPressed: showMydialog,  // Button press = dialog open
+          onPressed: showMydialog,  
           child: Text('Show Dialog'),
         ),
       ),
